@@ -1,0 +1,78 @@
+\documentclass[aspectratio=169]{beamer}
+
+\usetheme{upc}
+
+\usepackage[utf8x]{inputenc}
+\usepackage{lmodern}
+
+\title{Algoritmos y Estructuras de Datos}
+\subtitle{Introducción a las Estructuras de Datos y Algoritmos}
+\date{2015}
+\institute{\href{http://www.upc.edu.pe}{Universidad Peruana de Ciencias Aplicadas}}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Outline}
+  \tableofcontents
+\end{frame}
+
+\section{Introducción}
+
+\begin{frame}{Algunos términos}
+
+  \begin{itemize}
+    \item Los \alert{datos} son conjuntos de valores desorganizados o sin estructura, obtenidos por un proceso de medición o recopilación y que deben ser analizados o procesados para producir información. Ejemplos: CC68, 8, 20, ADT.
+    \item La \alert{información} es un conjunto de datos organizados, estructurados, procesados y analizados y presentados en un contexto útil. Ejemplos: CC68 es el código del curso, 8 es el mes de agosto, 20 es la edad de una persona, ADT significa Tipo de dato abstracto.
+    \item ¿Conocimiento?
+    \item ¿Sabiduría?
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Más términos}
+
+  \begin{itemize}
+    \item Los \alert{algoritmos} Se puede definir como procedimientos computacionales en pasos secuenciales y que toman uno o más valores (input) y los transforman en un resultado esperado (output). Los usamos para manipular la información contenida en las estructuras de datos. Deben ser correctos para cada instancia y un algoritmo simple no siempre es el más eficiente. Algunos ejemplos de algoritmos estudiados en el curso:
+    \begin{itemize}
+      \item Búsquedas,
+      \item ordenamientos.
+    \end{itemize}
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Más términos}
+
+  \begin{itemize}
+    \item Las \alert{estructuras de datos} son formas de almacenar y organizar datos para facilitar su acceso y modificación. Ninguna estructura de datos funciona bien para \emph{todos} los propósitos por lo tanto es importante conocer las fortalezas y limitaciones de las varias de ellas \cite{cormen}. Algunos ejemplos de estructuras estudiadas en el curso:
+    \begin{itemize}
+      \item Arreglos dinámicos,
+      \item listas,
+      \item pilas,
+      \item colas,
+      \item árboles.
+    \end{itemize}
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Estructuras de datos y sus relaciones}
+
+  \href{http://git-scm.com/}{…git} actually has a simple design, with stable and reasonably well-documented data structures. In fact, I'm a huge proponent of designing your code around the data, rather than the other way around, and I think it's one of the reasons git has been fairly successful […] I will, in fact, claim that the difference between a bad programmer and a good one is whether he considers his code or his data structures more important. \alert{Bad programmers worry about the code. Good programmers worry about data structures and their relationships}.
+
+\hfill - Linus Torvalds
+
+\end{frame}
+
+\section{Referencias}
+\begin{frame}{Referencias}
+  \begin{thebibliography}{9}
+    \bibitem{cormen}
+    Thomas H. Cormen, Charles E. Leirserson, Ronald L. Rivest, Clifford Stein.
+    \textit{Introduction to Algorithms}. Third edition, The MIT Press, Cambridge, Massachusetts, 2009.
+  \end{thebibliography}
+\end{frame}
+
+\end{document}
