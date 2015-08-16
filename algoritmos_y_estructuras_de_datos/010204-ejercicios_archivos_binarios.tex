@@ -1,0 +1,158 @@
+\documentclass[a4paper]{article}
+
+\usepackage[utf8x]{inputenc}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{fgcomments}{rgb}{0.4,0.4,0.4}
+\definecolor{fglinenumb}{rgb}{0.7,0.7,0.7}
+\definecolor{fgkeyword}{rgb}{1,0.3,0}
+\definecolor{fgstring}{rgb}{0.3,0.4,1}
+
+\lstset{
+  frame=single,
+  rulecolor=\color{fgkeyword},
+  language=C++,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{fglinenumb},
+  keywordstyle=\color{fgkeyword},
+  commentstyle=\color{fgcomments},
+  stringstyle=\color{fgstring},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=2
+}
+
+\title{Estructura de Datos y Algoritmos \\
+  \large Unidad 02: Organización de datos}
+\author{Todos los profesores}
+
+\begin{document}
+\maketitle
+
+\section{Archivos}
+Implementar lo siguiente:
+\begin{enumerate}
+  \item Escriba un programa que permita listar un archivo binario llamado 
+        "empleados.dat" que contiene la siguiente estructura:
+
+\begin{lstlisting}
+char nombre[10];
+int edad;
+double salario;
+\end{lstlisting}
+
+  \item Escriba un programa que permita listar al revés un archivo binario
+        llamado "empleados.dat" que contiene la siguiente estructura:
+
+\begin{lstlisting}
+char nombre[10];
+int edad;
+double salario;
+\end{lstlisting}
+
+	El archivo \emph{no} deberá ser modificado.
+  \item Escriba un programa que elimine de un archivo binario, todos los
+        registros que tengan un código que tenga como primer dígito un
+        número par. La estructura del archivo es como sigue:
+
+\begin{lstlisting}
+char codigo[8];
+char nombre[20];
+int edad;
+\end{lstlisting}
+
+  \item Escriba una función que busque en un archivo de texto una palabra
+        determinada y de encontrarla devuelva el número de línea donde se
+        encontró. Si no la encuentra devuelva -1. Considere que las líneas
+        del archivo de texto tienen como máximo 1024 caracteres.
+
+  \item Escriba una función que permita hacer una copia de un archivo de texto.
+        La función deberá recibir el nombre del archivo de origen y el nombre
+        del archivo destino.
+
+  \item Escriba una función que permita hacer una copia de un archivo de
+        texto. La función deberá recibir el nombre del archivo de origen y
+        el nombre del archivo destino. El archivo destino deberá tener todas
+        las letras vocales convertidas a la letra ‘a’.
+
+	Ejemplo: arcoiris → arcaaras
+  \item Escriba un programa que devuelva las siguientes estadísticas con
+        respecto a un archivo de texto:
+    \begin{enumerate}
+      \item Cantidad de caracteres (letras + espacios + símbolos)
+      \item Cantidad de letras
+      \item Cantidad de espacios
+      \item Cantidad de símbolos
+      \item Cantidad de vocales
+      \item Cantidad de mayúsculas
+      \item Cantidad de minúsculas
+      \item Frecuencia de letras.
+    \end{enumerate}
+	Los resultados deberán ser escritos en un archivo de texto que tenga
+        el mismo nombre del archivo procesado y .estat.txt
+
+	Ejemplo:
+
+    \begin{enumerate}
+      \item Archivo a procesar: Datos.txt
+      \item Archivo de resultados: Datos.txt.estat.txt
+    \end{enumerate}
+
+  \item Escriba una función que permita contar la cantidad de palabras
+        que existen en una cadena de caracteres. Considere que no existen
+        2 espacios en blanco continuos.
+
+        Escriba un programa que permita contar la cantidad de palabras
+        que existen en un archivo de texto.
+
+  \item Escriba un programa que permita procesar un archivo de texto que
+        contiene un diccionario.
+
+        El programa deberá pedirle al usuario que ingrese las primeras n
+        letras de la palabra que desea buscar. Luego el programa mostrará
+        todas las palabras que se encuentren en el archivo de texto que
+        comiencen con las letras ingresadas. 
+
+        Usted puede asumir que cada palabra del archivo de texto está en
+        una línea nueva de la siguiente manera:
+
+\begin{lstlisting}
+abuelo
+arbol
+arbusto
+barco
+casa
+zapato
+\end{lstlisting}
+
+	Si el usuario ingresara ar, el programa debería mostrar arbol
+        y arbusto, sin embargo si solo ingresara la letra a, debería
+        mostrar abuelo, arbol y arbusto.
+
+	Puede asumir que el diccionario no tiene acentos y que el usuario
+        tampoco ingresará acentos.
+
+  \item Escriba un programa que permita administrar una lista de Alumnos
+        utilizando POO y que permita almacenar y cargar la información
+        desde un archivo.
+
+        Cada alumno deberá tener los siguientes datos:
+    \begin{enumerate}
+      \item Edad
+      \item Promedio
+      \item Codigo
+      \item Nombre
+    \end{enumerate}
+
+        Considere como máximo 100 alumnos y además que no pueden existir
+        alumnos con códigos repetidos.
+
+\end{enumerate}
+
+\end{document}

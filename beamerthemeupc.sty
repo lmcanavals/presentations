@@ -2,15 +2,50 @@
 
 \useoutertheme[height=0pt]{sidebar}
 
-\usepackage{tikz}
-\usetikzlibrary{arrows,shapes,trees,positioning,fadings}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage{lmodern}
 \usepackage{amsmath}
+\usepackage{tabu}
+\usepackage{listings}
+
+\definecolor{UpcRed}{HTML}{FF1901} % rojo UPC
+\definecolor{DarkGray}{HTML}{3E3E3E} % gris oscuro
+\definecolor{Gray}{HTML}{626262}  % gris medio
+\definecolor{LightGray}{HTML}{bbbbbb}  % gris claro
+
+\lstset{
+  frame=single,
+  rulecolor=\color{LightGray},
+  language=C++,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{DarkGray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{LightGray},
+  stringstyle=\color{cyan},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=2,
+  literate=
+  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+  {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+  {€}{{\EUR}}1 {£}{{\pounds}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1
+}
 
 \mode<presentation>
-
-  \definecolor{UpcRed}{HTML}{FF1901} % rojo UPC
-  \definecolor{DarkGray}{HTML}{3E3E3E} % gris oscuro
-  \definecolor{Grey}{HTML}{626262}  % gris medio
 
   \setbeamercolor{normal text}{bg=white,fg=black}
 
@@ -37,7 +72,7 @@
   \setbeamercolor{itemize subsubitem}{fg=UpcRed}
 
   \setbeamercolor{block title}{bg=DarkGray,fg=white}
-  \setbeamercolor{block body}{fg=black,bg=Grey!5}
+  \setbeamercolor{block body}{fg=black,bg=Gray!5}
   \setbeamercolor{alerted text}{fg=UpcRed}
 
   \usetheme{default}

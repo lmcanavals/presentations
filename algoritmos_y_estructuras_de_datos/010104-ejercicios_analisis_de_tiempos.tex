@@ -1,0 +1,248 @@
+\documentclass{article}
+
+\usepackage[a4paper, margin=25mm]{geometry}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage{lmodern}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{UpcRed}{HTML}{FF1901} % rojo UPC
+\definecolor{DarkGray}{HTML}{3E3E3E} % gris oscuro
+\definecolor{Gray}{HTML}{626262}  % gris medio
+\definecolor{LightGray}{HTML}{bbbbbb}  % gris claro
+
+\lstset{
+  frame=single,
+  rulecolor=\color{LightGray},
+  language=C++,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{DarkGray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{LightGray},
+  stringstyle=\color{cyan},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=2,
+  literate=
+  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+  {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+  {€}{{\EUR}}1 {£}{{\pounds}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1
+}
+
+\title{Estructura de Datos y Algoritmos \\
+  \large Unidad 01: Crecimiento de funciones}
+\author{Todos los profesores}
+\date{}
+
+\begin{document}
+\maketitle
+
+
+\section{Ejercicio 01}
+Suma y Promedio de números.
+
+\begin{lstlisting}
+int s = 0;
+double prom = 0;
+for (int i=0; i<n; i++) {
+  s = s + A[i];
+  prom = s / (double)n;
+}
+printf("Suma:%d\nProm:%d", s, prom);
+\end{lstlisting}
+
+\section{Ejecicio 02}
+Suma y Promedio de números (2.0).
+
+\begin{lstlisting}
+int s = 0;
+double prom = 0;
+for (int i=0; i<n; i++) {
+  s = s + A[i];
+}
+prom = s / (double)n;
+printf("Suma:%d\nProm:%d", s, prom);
+\end{lstlisting}
+
+\section{Ejercicio 03}
+Ordenamiento de N números del 1 al 100.
+
+\begin{lstlisting}
+for (int i=0; i<n-1; i++) {
+  for (int k=i+1; k<n; k++) {
+    if (vec[i] > vec[k]) {
+      int aux = vec[i];
+      vec[i] = vec[k];
+      vec[k] = aux;
+    }
+  }
+}
+\end{lstlisting}
+
+\section{Ejercicio 04}
+Ordenamiento de N números del 1 al 100 (2.0).
+
+\begin{lstlisting}
+int frec[101]={0};
+for (int i=0; i<n; i++) {
+  frec[vec[i]]++;
+}
+int pos = 0;
+for (int i=0; i<101; i++) {
+  for (int k=0; k<fec[i]; k++) {
+    vec[pos] = i;
+    pos++;
+  }
+}
+\end{lstlisting}
+
+\section{Ejercicio 05}
+Algoritmo raro - Infinito.
+
+\begin{lstlisting}
+int i=0;
+int sum=0;
+while (i < 100) {
+  if (i % 2 == 0) {
+    for (int k=0; k<n; k++) {
+      sum += vec[i];
+    }
+  }
+  else {
+    for (int k=0; k<i; k++) {
+      sum += vec[i];
+    }
+  }
+}
+\end{lstlisting}
+
+\section{Ejercicio 06}
+Factorial.
+
+\begin{lstlisting}
+int fact = 1;
+for (int i=2; i<n; i++) {
+  fact *= i;
+}
+printf("Factorial: %d", fact);
+\end{lstlisting}
+
+\section{Ejercicio 07}
+Buscar cadena de máximo 50 caracteres.
+
+\begin{lstlisting}
+int pos = -1;
+for (int i=0; i<n; i++) {
+  if (strcmp(vec[i], cadBuscar) == 0) {
+    pos = i;
+    break;
+  }
+}
+\end{lstlisting}
+
+\section{Ejercicio 08}
+Buscar el mayor.
+
+\begin{lstlisting}
+int pos = 0;
+for (int i=1; i<n; i++) {
+  if (vec[i] > vec[pos])
+    pos = i;
+}
+printf("El mayor es: %d", vec[pos]); 
+\end{lstlisting}
+
+\section{Ejercicio 09}
+Otro algoritmo raro – El while es válido?.
+
+\begin{lstlisting}
+int max = 0;
+for (int m=0; m<n; m++) {
+  int cont = 0;
+  int k = m + 1;
+  while (vec[m] <= vec[k]) {
+    k = k + 1;
+    cont++;
+  }
+  if (cont > max)
+    max = cont;
+}
+printf("Maximo %d", max);
+\end{lstlisting}
+
+\section{Ejercicio 10}
+Logarítmica.
+
+\begin{lstlisting}
+int i=1;
+while (i < n) {
+  if (vec[i] % 2 == 0)
+  	i *= 3;
+  else
+  	i *= 2;
+}
+\end{lstlisting}
+
+\section{Ejercicio 11}
+Logarítmica (2.0).
+
+\begin{lstlisting}
+int i=1;
+while (i < n) {
+  if (vec[i] % 2 == 0)
+  	n = n / 3;
+  else
+  	n = n / 2;
+}
+\end{lstlisting}
+
+\section{Ejercicio 12}
+Búsqueda binaria – Arreglo ordenado.
+
+\begin{lstlisting}
+int inf = 0;
+int sup = n - 1;
+int pos = -1;
+
+while ((pos == -1) && (sup >= inf)) {
+  int medio = (inf + sup) / 2;
+  if (arreglo[medio] == 80)
+  	posicion = medio;
+  else if (arreglo[medio] < 80)
+  	limiteInferior = medio + 1;
+  else
+  	limiteSuperior = medio - 1;
+}
+\end{lstlisting}
+
+\section{Ejercicio 13-22}
+Implemente y analice las siguientes funciones.
+\begin{enumerate}
+\item Encontrar el número mayor en un arreglo de enteros
+\item Ordenar un arreglo de números enteros
+\item Eliminar el elemento en una posicion de un arreglo
+\item Buscar un número en un arreglo
+\item Calcular el factorial de N
+\item Determinar si un número existe en un arreglo de enteros.
+\item Calcular cuántas veces se repite un número X en un arreglo de enteros.
+\item Sumar los dígitos de un número entero positivo.
+\item Determinar si un número es primo o no.
+\item Determinar la cantidad de primos que existen en un arreglo de enteros.
+\end{enumerate}
+
+\end{document}
