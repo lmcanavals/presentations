@@ -1,0 +1,156 @@
+\documentclass[aspectratio=169]{beamer}
+
+\usetheme{upc}
+
+\usepackage{etex}
+\usepackage{pgf,pgfopts,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{tikz-uml}
+
+\pgfplotsset{compat=1.10}
+
+\title{Algoritmos y Estructuras de Datos}
+\subtitle{Cadenas, Registros, punteros, referencias, objetos, instancias}
+\date{2015}
+\institute{\href{http://www.upc.edu.pe}{Universidad Peruana de Ciencias Aplicadas}}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Outline}
+\tableofcontents
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%% Primera sección %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Logro}
+\begin{frame}{Logro}
+Al finalizar la sesión el estudiante implementará aplicaciones haciendo uso
+de cadenas estilo C y C++, registros y objetos de manera experta.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%% Segunda sección %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Cadenas}
+\begin{frame}{Cadenas de caracteres}
+\begin{block}{Definición}
+Las cadena (del inglés string) son secuencias de caracteres y es un tipo de dato común en lenguajes de programación de alto nivel. Según la forma en la que se implementan pueden ser mutables o inmutables.
+\end{block}
+\end{frame}
+
+\subsection{Cadenas estilo C}
+\begin{frame}{char*}
+Las cadenas en el lenguaje C se representan por medio de arreglos de tipo char los cuales se declaran de diversas formas.
+\begin{itemize}
+\item char*: como un puntero de tipo char.
+\item char[100]: como un arreglo estático de tipo char.
+\item const char*: como un puntero constante char.
+\end{itemize}
+\end{frame}
+\begin{frame}{Consideraciones}
+\begin{itemize}
+\item Dada una cadena de longitud N, cadenas estilo C necesitan por lo menos N + 1 espacios de tipo char para almacenar dicha cadena dado que se utiliza el espacio adicional para el terminador de cadenas $'\backslash 0'$.
+\item En caso de utilizar char*, es decir un puntero a char, para representar cadenas, no debemos olvidar reservar y liberar el espacio de memoria de manera responsable.
+\item En caso de usar char[123], es importante también considerar el uso de operaciones de manera segura para no escribir más allá de los límites del arreglo.
+\end{itemize}
+\end{frame}
+\begin{frame}{Operaciones}
+\begin{itemize}
+\item \#include <string.h> 
+\item Tamaño: strlen(cadena)
+\item Copiar: strcpy(d, s), strncpy(d, s, n)
+\item Concatenar: strcat(d, s), strncat(d, s, n)
+\item Comparar: strcmp(a, b), strncmp(a, b, n)
+\item Buscar caracter: strchar(s, c)
+\end{itemize}
+\end{frame}
+
+\subsection{Cadenas estilo C++}
+\begin{frame}[fragile]{std::string}
+Las cadenas en el lenguaje C++ se representan por medio de objetos de tipo std::string.
+\begin{lstlisting}
+#include <string>
+#include <iostream>
+using namespace std;
+int main() {
+  string cadena1;
+  string cadena2(", mundo");
+  cadena1 = "Hola";
+  cout << cadena1 << cadena2 << endl;
+  return 0;
+}
+\end{lstlisting}
+\end{frame}
+\begin{frame}{Operaciones}
+\begin{itemize}
+\item \#include <string> 
+\item Tamaño: cadena.size()
+\item Copiar: s = d;
+\item Concatenar: s = s + d;, s += d;
+\item Comparar: a == b;
+\item Buscar: s.find(t);
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%% Tercera sección %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Registros o estructuras}
+\begin{frame}[fragile]{Registros}
+Los registros son una forma de agrupar variables bajo un nombre como si fueran de un tipo de dato.
+Por ejemplo podemos crear un nuevo registro Alumno:
+\begin{lstlisting}
+struct Alumno {
+  int edad;
+  char tipo;
+  double promedio;
+}
+\end{lstlisting}
+\end{frame}
+\begin{frame}[fragile]{Registros}
+Podemos utilizar registro Alumno de la siguiente forma:
+\begin{lstlisting}
+Alumno a1;
+a1.edad = 50;
+a1.tipo = 'G';
+a1.promedio = 4.55;
+\end{lstlisting}
+\end{frame}
+\begin{frame}{Consideraciones}
+\begin{itemize}
+\item ¿Cuantos bytes ocupa en total una variable de tipo Alumno?
+\item En C++ las clases y los registros solo se diferencian en que el tipo de acceso por defecto de las clases es privado y de los registros es público.
+\item El uso de uno u otro depende del problema a tratar y las convenciones adoptadas por el equipo de desarrollo.
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%% Cuarta sección %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Objetos, referencias, objetos e instancias}
+\begin{frame}{Objetos}
+\begin{block}{Instancias}
+Un objeto o instancia es una porción de la memoria del computador que contiene un valor de un tipo definido como Clase y que por lo general está asociado a una variable llamada referencia.
+\end{block}
+\begin{block}{Punteros}
+En el lenguaje C++ se recomienda manejar objetos de manera dinámica, en otras palabras usando punteros, creándolos con \alert{new} y liberándolos de memoria con \alert{delete}. \\
+Es generalmente considerado una mala práctica usar objetos estáticos de tipo clase definida por el usuario. En otras palabras, esto no aplica a clases que forman parte de librerías del propio lenguaje como por ejemplo std::string o std::vector, etc.
+\end{block}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%% Última sección %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Referencias}
+\begin{frame}{Referencias}
+\begin{thebibliography}{9}
+\bibitem{cormen}
+Thomas H. Cormen, Charles E. Leirserson, Ronald L. Rivest, Clifford Stein.
+\textbf{Introduction to Algorithms}.
+Third edition, The MIT Press, Cambridge, Massachusetts, 2009.
+\bibitem{pppcppt}
+Bjarne Stroustrup.
+\textbf{Programming: Principles and practice using C++}.
+Addison-Wesley, Upper Saddle River, NJ, Boston, 2009. Capítulo 19 sección 3, p. 656.
+\bibitem{cstring}
+cplusplus.com
+\textbf{string.h}. http://www.cplusplus.com/reference/cstring/
+\bibitem{string}
+cplusplus.com
+\textbf{string}. http://www.cplusplus.com/reference/string/
+\bibitem{unders}
+http://www.open-std.org/JTC1/SC22/WG14/www/docs/n1225.pdf
+\end{thebibliography}
+\end{frame}
+
+\end{document}
