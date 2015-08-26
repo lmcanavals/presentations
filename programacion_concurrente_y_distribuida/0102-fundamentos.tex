@@ -1,0 +1,166 @@
+\documentclass[aspectratio=169]{beamer}
+
+\usetheme{upc}
+
+\usepackage{etex}
+\usepackage{pgf,pgfopts,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{tikz-uml}
+
+\pgfplotsset{compat=1.10}
+
+\title{Programación Concurrente y Distribuida}
+\subtitle{Fundamentos}
+\date{2015}
+\institute{\href{http://www.upc.edu.pe}{Universidad Peruana de Ciencias Aplicadas}}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}
+Presentación basada en el libro Java Concurrency in Practice de Brian Goetz.
+\end{frame}
+
+\begin{frame}{Outline}
+\begin{minipage}{\textwidth}
+\tableofcontents
+\end{minipage}
+\end{frame}
+
+\section{Logro} % Sección 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Logro}
+Al finalizar la sesión el estudiante construye componentes y aplicaciones
+considerando las implicaciones de la programación concurrente de manera
+estratégica.
+\end{frame}
+
+\section{Thread safety} % Sección 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\begin{itemize}
+\item Atomicidad
+\item Bloqueo
+\item Liveness
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Thread safe}
+\begin{block}{Definición}
+Una clase es Thread safe si puede ser usada desde múltiples hilos sin causar
+interacciones no deseadas.
+\end{block}
+\end{frame}
+
+\begin{frame}{Atomicidad}
+\begin{block}{Definición}
+Una sola operación a la vez!
+\end{block}
+\begin{block}{Condición de carrera}
+Situación que ocurre cuando 2 operaciones se intentan realizar al mismo tiempo
+sobre un mismo recurso, provocando un resultado no deseado.
+\end{block}
+\end{frame}
+
+\begin{frame}{Bloqueo}
+\begin{block}{Definición}
+Cuando la atomicidad por si sola no es suficiente para mantener la consistencia
+de un dato, por ejemplo cuando se necesita mantener correlación entre múltiples
+variables.\\
+Formas comunes de implementar bloqueo es usando bloques sincronizados,
+semáforos o mutex.
+\end{block}
+\end{frame}
+
+\begin{frame}{Liveness}
+\begin{block}{Definición}
+Es la capacidad de una aplicación de ejecutarse de manera oportuna. A tiempo
+o en algún momento.\\
+Deadlock, starvation y livelock son problemas comunes
+relacionados a Liveness.
+\end{block}
+\end{frame}
+
+\section{Objetos compartidos} % Sección 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\begin{itemize}
+\item Visibilidad
+\item Publicación y escape
+\item Confinamiento al hilo
+\item Inmutabilidad
+\item Publicación segura
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Visibilidad}
+\begin{block}{Definición}
+No hay garantías de que el valor de una variable compartida por varios hilos,
+sea pasado todos los hilos.\\
+Por ejemplo, el compilador podría guardar en cache
+el valor de una variable para optimizar el programa.\\
+La solución es usar variables volátiles.
+\end{block}
+\end{frame}
+
+\begin{frame}{Publicación y escape}
+\begin{block}{Definición}
+Es hacer accesible un objeto más allá de su alcance (scope), en otras palabras
+existe una referencia al objeto en algún otro lugar del programa.\\
+En caso este comportamiento ocurra sin que se haya previsto de esta manera, se
+considera \alert{escape}.\\
+Para asegurar una correcta publicación podría ser necesario el uso de bloqueo.
+\end{block}
+\end{frame}
+
+\begin{frame}{Confinamiento al hilo}
+\begin{block}{Definición}
+Data que solo es accesible desde un hilo en particular, se considera confinada
+y es la forma más sencilla de conseguir thead safety.
+\end{block}
+\end{frame}
+
+\begin{frame}{Inmutabilidad}
+\begin{block}{Definición}
+Una variable es inmutable cuando su valor no puede ser modificado. Esto
+asegura que problemas relacionados a atomicidad, simplemente no existan.
+\end{block}
+\end{frame}
+
+\begin{frame}{Publicación segura}
+\begin{block}{Definición}
+\end{block}
+\end{frame}
+
+\section{Composición de objetos} % Sección 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\begin{itemize}
+\item Diseño de clases thread safe
+\item Confinamiento a instancia
+\item Delegando thread safety
+\item Agregando funcionalidad a clases thread safe
+\item Políticas de sincronización
+\end{itemize}
+\end{frame}
+
+\section{Puntos de partida} % Sección 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\begin{itemize}
+\item Colecciones sincronizadas
+\item Colecciones concurrentes
+\item Productores y consumidores
+\item Métodos interrumpibles
+\item Sincronizadores
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%
+\section{Referencias} % Bibliografía %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Referencias}
+\begin{thebibliography}{9}
+\bibitem{goetz}
+GOETZ, Brian et al.
+\textbf{Java Concurrency in Practice}.
+Addison-Wesley, Upper Saddle River, NJ, 2006.
+\end{thebibliography}
+\end{frame}
+
+\end{document}
