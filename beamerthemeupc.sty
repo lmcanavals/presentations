@@ -42,58 +42,60 @@
   {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
   {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
   {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
-  {€}{{\EUR}}1 {£}{{\pounds}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1
+  {€}{{\EUR}}1 {£}{{\pounds}}1 {ñ}{{\~ n}}1 {Ñ}{{\~ N}}1
 }
 
 \mode<presentation>
 
-  \setbeamercolor{normal text}{bg=white,fg=black}
+\setbeamercolor{normal text}{bg=white,fg=black}
 
-  \setbeamercolor{title}{fg=UpcRed}
-  \setbeamercolor{title in sidebar}{fg=UpcRed}
-  \setbeamercolor{navigation symbols}{fg=UpcRed!60,fg=UpcRed!40}
+\setbeamercolor{title}{fg=UpcRed}
+\setbeamercolor{title in sidebar}{fg=UpcRed}
+\setbeamercolor{navigation symbols}{fg=UpcRed!60,fg=UpcRed!40}
 
-  \setbeamercolor{section in sidebar}{fg=UpcRed}
-  \setbeamercolor{section in sidebar shaded}{fg=UpcRed!30}
-  \setbeamercolor{subsection in sidebar}{fg=UpcRed}
-  \setbeamercolor{subsection in sidebar shaded}{fg=UpcRed!30}
-  \setbeamercolor{section in toc}{fg=black}
-  \setbeamercolor{section in toc shaded}{fg=black!75}
+\setbeamercolor{section in sidebar}{fg=UpcRed}
+\setbeamercolor{section in sidebar shaded}{fg=UpcRed!30}
+\setbeamercolor{subsection in sidebar}{fg=UpcRed}
+\setbeamercolor{subsection in sidebar shaded}{fg=UpcRed!30}
+\setbeamercolor{section in toc}{fg=black}
+\setbeamercolor{section in toc shaded}{fg=black!75}
 
-  \setbeamercolor{frametitle}{fg=UpcRed}
-  \setbeamercolor*{bibliography entry title}{fg=black}
-  \setbeamercolor*{bibliography entry author}{fg=black}
-  \setbeamercolor*{bibliography entry location}{fg=black}
-  \setbeamercolor*{bibliography entry note}{fg=black}
+\setbeamercolor{frametitle}{fg=UpcRed}
+\setbeamercolor*{bibliography entry title}{fg=black}
+\setbeamercolor*{bibliography entry author}{fg=black}
+\setbeamercolor*{bibliography entry location}{fg=black}
+\setbeamercolor*{bibliography entry note}{fg=black}
 
-  \setbeamercolor{enumerate item}{fg=UpcRed}
-  \setbeamercolor{itemize item}{fg=UpcRed}
-  \setbeamercolor{itemize subitem}{fg=UpcRed}
-  \setbeamercolor{itemize subsubitem}{fg=UpcRed}
+\setbeamercolor{enumerate item}{fg=UpcRed}
+\setbeamercolor{itemize item}{fg=UpcRed}
+\setbeamercolor{itemize subitem}{fg=UpcRed}
+\setbeamercolor{itemize subsubitem}{fg=UpcRed}
 
-  \setbeamercolor{block title}{bg=DarkGray,fg=white}
-  \setbeamercolor{block body}{fg=black,bg=Gray!5}
-  \setbeamercolor{alerted text}{fg=UpcRed}
+\setbeamercolor{block title}{bg=DarkGray,fg=white}
+\setbeamercolor{block body}{fg=black,bg=Gray!5}
+\setbeamercolor{alerted text}{fg=UpcRed}
 
-  \usetheme{default}
-  \usecolortheme[named=UpcRed]{structure}
-  \usefonttheme{structurebold}
+\usetheme{default}
+\usecolortheme[named=UpcRed]{structure}
+\usefonttheme{structurebold}
 
-  \setbeamertemplate{footline}[frame number]
-  \setbeamertemplate{section in toc}[sections numbered]
-  \setbeamertemplate{subsection in toc}[subsections numbered]
-  \setbeamertemplate{blocks}[rounded]
+\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}[subsections numbered]
+\setbeamertemplate{blocks}[rounded]
 
-  \setbeamertemplate{sidebar right}{}
-  \setbeamertemplate{footline} {
-    \hfill\usebeamertemplate*{navigation symbols}
-    \hspace{.25cm}\insertframenumber{}/\inserttotalframenumber
-  }
+\setbeamertemplate{sidebar right}{}
+\setbeamertemplate{footline} {
+\hfill\usebeamertemplate*{navigation symbols}
+\hspace{.25cm}\insertframenumber{}/\inserttotalframenumber
+}
 
-  \AtBeginSection[]{
-    \begin{frame}[allowframebreaks]{Outline}
-      \tableofcontents[currentsection]
-    \end{frame}
-  }
+\AtBeginSection[]{
+\begin{frame}[allowframebreaks]{Outline}
+\begin{minipage}{\textwidth}
+\tableofcontents[currentsection]
+\end{minipage}
+\end{frame}
+}
 
 \mode<all>
