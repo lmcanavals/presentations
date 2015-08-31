@@ -1,0 +1,236 @@
+\documentclass[aspectratio=169]{beamer}
+
+\usetheme{upc}
+
+\usepackage{etex}
+\usepackage{pgf,pgfopts,pgfplots}
+\usepackage{mathrsfs}
+\usepackage{tikz-uml}
+
+\pgfplotsset{compat=1.10}
+
+\title{Algoritmos y Estructuras de Datos}
+\subtitle{Lectura y Escritura de Archivos}
+\date{2015}
+\institute{\href{http://www.upc.edu.pe}{Universidad Peruana de Ciencias Aplicadas}}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Outline}
+\tableofcontents
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%% Primera sección %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Logro}
+\begin{frame}{Logro}
+Al finalizar la sesión el estudiante implementará aplicaciones con datos
+persistentes usando archivos de manera eficiente.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%% Segunda sección %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Archivos}
+\begin{frame}{A tomar en cuenta}
+\begin{itemize}
+\item Almacenar datos en variable o en arreglos es temporal.
+\item Al terminar un programa, los datos almacenados se pierden.
+\item Para conservar datos permanentemente se utilizan archivos.
+\item Los archivos almacenan en dispositivos de almacenamiento secundario,
+especialmente en discos.
+\item Cuando se trabaja con archivos se utilizan buffers, almacenes temporales
+de datos en memoria.
+\item Las operaciones de saluda se hacen a través del buffer, y solo cuando el
+buffer se llena se realiza la escritura en el disco y se vacía el buffer.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Beneficios}
+\begin{itemize}
+\item Permite alcanzar gran cantidad de información en un medio rápidamente
+accesible por la computadora.
+\item Evita el hecho de tener que volver a leer datos.
+\item Los datos almacenados pueden ser compartidos por más de un programa.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Operaciones con archivos}
+\begin{itemize}
+\item Para operar con un archivo hay que referirse a él mediante el nombre.
+\item Las operaciones básicas para usar un arhcivo son:
+\begin{itemize}
+\item Apertura, dándole nombre y otras especificaciones.
+\item Escritura de datos.
+\item Lectura de datos.
+\item Modificación de datos.
+\item Cierre.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Cómo definir un archivo en C++}
+\begin{itemize}
+\item En primer lugar debemos incluir el archivo de cabecera \alert{fstream}
+y declarar el uso del espacio de nombres \alert{std} para abreviar.
+\item Ésta librería incluye 3 clases:
+\begin{itemize}
+\item ofstream: para operaciones de solo escritura.
+\item ifstream: para operaciones de solo lectura.
+\item fstream: para operaciones de lectura y escritura.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Apertura de un archivo}
+\begin{itemize}
+\item Existen 2 formas de abrir un archivo de cualquiera de los 3 tipos.
+\item Cualquiera de las 2 formas requiere 2 parámetros: nombre de archivo y
+modos de apertura. Los modos de apertura son opcionales.
+\begin{itemize}
+\item Usando el constructor:
+\begin{lstlisting}
+fstream archivo("nombre.archivo", ios::binary | ios::in);
+\end{lstlisting}
+\item Usando método open:
+\begin{lstlisting}
+ofstream archivo;
+archivo.open("nombre.archivo", ios::binary);
+\end{lstlisting}
+\end{itemize}
+\item Para verificar si el archivo fue abierto correctamente, se usa el método is\_open()
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Modos de apertura}
+\begin{itemize}
+\item ios::in: Operaciones de lectura.
+\item ios::out: Operaciones de escritura.
+\item ios::binary: Archivo binario.
+\item ios::ate: Posiciona el cursor al final del archivo.
+\item ios::app: Operaciones de escritura se realizan al final del archivo.
+\item ios::trunc: Remplaza el archivo, sobre-escribe su contenido si existiera.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Cerrar un archivo}
+Para cerrar un archivo se usa el método close().
+\begin{lstlisting}
+archivo.close();
+\end{lstlisting}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%% Tercera sección %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Archivos de acceso aleatorio}
+\begin{frame}{Archivos binarios}
+\begin{itemize}
+\item También conocidos como archivos binarios.
+\item Permiten acceder a cualquier parte del fichero en cualquier momento como si fueran vectores en memoria.
+\item Las operaciones de lectura y (o) escritura pueden hacerse en cualquier punto del archivo.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Escritura de datos}
+Para escribir se usa el método ostream\& write (const char* s, streamsize n)
+\begin{block}{Parámetros}
+\alert{s} es un puntero a un arreglo de por lo menos n bytes.\\
+\alert{n} es el número de bytes a escribir.
+\end{block}
+Es importante destacar que se debe hacer casting a char* en caso el dato que se
+desea escribir sea de otro tipo.
+\begin{lstlisting}
+long numero;
+int arreglo[TAMANO];
+archivo.write((char*)&numero, sizeof(long));
+archivo.write((char*)arreglo, sizeof(int) * TAMANO);
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Lectura de datos}
+Para leer se usa el método istream\& read (char* s, streamsize n)
+\begin{block}{Parámetros}
+\alert{s} es un puntero a un arreglo de por lo menos n bytes.\\
+\alert{n} es el número de bytes a escribir.
+\end{block}
+Es importante destacar que se debe hacer casting a char* en caso el dato que se
+desea leer sea de otro tipo.
+\begin{lstlisting}
+long numero;
+int arreglo[TAMANO];
+archivo.read((char*)&numero, sizeof(long));
+archivo.read((char*)arreglo, sizeof(int) * TAMANO);
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Operaciones complementarias}
+\begin{itemize}
+\item bad() retorna verdadero en caso de error de lectura y escritura. fail() igual
+que el anterior pero además en caso de error de formato. eof() verdadero cuando
+el cursor de lectura se encuentra al final del archivo. good() verdadero cuando
+todos los anteriores retornan falso.
+\item tellg() y tellp(), retornan la posición del cursor de lectura (get) y
+escritura (put), respectivamente.
+\item seekg() y seekp(), permiten ubicar los cursores de lectura y escritura en la
+posición indicada. Pueden recibir una posición absoluta o relativa. En caso sea relativa
+se usan las banderas ios::beg, ios::end y ios::cur para indicar el punto de referencia
+a partir del cual se realizará el desplazamiento.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Consideraciones}
+\begin{itemize}
+\item Es posible guardar datos de tipos de datos distintos, como en el ejemplo
+anterior que se escribe un valor de tipo long y luego un arreglo de TAMANO 
+elementos de tipo entero. 
+\item En caso se guarden tipos de datos distintos, se recomienda hacerlo
+en un orden determinado previamente establecido.
+\item Se recomienda el uso de registros para simplificar el proceso de lectura
+y escritura.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%% Cuarta sección %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Archivos de acceso secuencial}
+\begin{frame}{Archivos de texto}
+\begin{itemize}
+\item La información sólo puede leerse y escribirse empezando desde el principio del archivo.
+\item Son más sencillos de manejar, ya que requieren menos funciones, además son más rápidos.
+\item Son útiles cuando sólo se quiere almacenar cierta información a medida que se recibe, y no interesa analizarla en el momento.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Escritura y lectura de texto}
+\begin{block}{Just like cout y cin}
+Para escribir y leer archivos de texto se usa la misma sintaxis usada con
+los objetos cin y cout.
+\end{block}
+\begin{lstlisting}
+ofstream archivo("archivo.txt");
+archivo << "Hola mundo!" << endl;
+
+ifstream archivo("datos.txt");
+archivo >> numero;
+\end{lstlisting}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%% Última sección %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Referencias}
+\begin{frame}{Referencias}
+\begin{thebibliography}{9}
+\bibitem{cormen}
+Thomas H. Cormen, Charles E. Leirserson, Ronald L. Rivest, Clifford Stein.
+\textbf{Introduction to Algorithms}.
+Third edition, The MIT Press, Cambridge, Massachusetts, 2009.
+\bibitem{pppcppt}
+Bjarne Stroustrup.
+\textbf{Programming: Principles and practice using C++}.
+Addison-Wesley, Upper Saddle River, NJ, Boston, 2009. Capítulo 19 sección 3, p. 656.
+\bibitem{fsmream}
+cplusplus.com
+\textbf{fstream}. http://www.cplusplus.com/reference/fstream/
+\bibitem{files}
+cplusplus.com
+\textbf{Input/Output with files}. http://www.cplusplus.com/doc/tutorial/files/
+\end{thebibliography}
+\end{frame}
+
+\end{document}
