@@ -45,9 +45,9 @@
 }
 
 \title{Estructura de Datos y Algoritmos \\
-  \large Unidad 01: Crecimiento de funciones}
+  \large Análisis de algoritmos}
 \author{Todos los profesores}
-\date{}
+\date{\the\year}
 
 \begin{document}
 \maketitle
@@ -59,9 +59,9 @@ Suma y Promedio de números.
 \begin{lstlisting}
 int s = 0;
 double prom = 0;
-for (int i=0; i<n; i++) {
+for (int i = 0; i < n; i++) {
   s = s + A[i];
-  prom = s / (double)n;
+  prom = s / (double) n;
 }
 printf("Suma:%d\nProm:%d", s, prom);
 \end{lstlisting}
@@ -72,7 +72,7 @@ Suma y Promedio de números (2.0).
 \begin{lstlisting}
 int s = 0;
 double prom = 0;
-for (int i=0; i<n; i++) {
+for (int i = 0; i < n; i++) {
   s = s + A[i];
 }
 prom = s / (double)n;
@@ -83,8 +83,8 @@ printf("Suma:%d\nProm:%d", s, prom);
 Ordenamiento de N números del 1 al 100.
 
 \begin{lstlisting}
-for (int i=0; i<n-1; i++) {
-  for (int k=i+1; k<n; k++) {
+for (int i = 0; i < n - 1; i++) {
+  for (int k = i + 1; k < n; k++) {
     if (vec[i] > vec[k]) {
       int aux = vec[i];
       vec[i] = vec[k];
@@ -94,17 +94,18 @@ for (int i=0; i<n-1; i++) {
 }
 \end{lstlisting}
 
+\pagebreak
 \section{Ejercicio 04}
 Ordenamiento de N números del 1 al 100 (2.0).
 
 \begin{lstlisting}
-int frec[101]={0};
-for (int i=0; i<n; i++) {
+int frec[101] = {0};
+for (int i = 0; i < n; i++) {
   frec[vec[i]]++;
 }
 int pos = 0;
-for (int i=0; i<101; i++) {
-  for (int k=0; k<fec[i]; k++) {
+for (int i = 0; i < 101; i++) {
+  for (int k = 0; k < frec[i]; k++) {
     vec[pos] = i;
     pos++;
   }
@@ -119,7 +120,7 @@ int i=0;
 int sum=0;
 while (i < 100) {
   if (i % 2 == 0) {
-    for (int k=0; k<n; k++) {
+    for (int k = 0; k < n; k++) {
       sum += vec[i];
     }
   }
@@ -136,7 +137,7 @@ Factorial.
 
 \begin{lstlisting}
 int fact = 1;
-for (int i=2; i<n; i++) {
+for (int i = 2; i < n; i++) {
   fact *= i;
 }
 printf("Factorial: %d", fact);
@@ -147,7 +148,7 @@ Buscar cadena de máximo 50 caracteres.
 
 \begin{lstlisting}
 int pos = -1;
-for (int i=0; i<n; i++) {
+for (int i = 0; i < n; i++) {
   if (strcmp(vec[i], cadBuscar) == 0) {
     pos = i;
     break;
@@ -160,7 +161,7 @@ Buscar el mayor.
 
 \begin{lstlisting}
 int pos = 0;
-for (int i=1; i<n; i++) {
+for (int i = 1; i < n; i++) {
   if (vec[i] > vec[pos])
     pos = i;
 }
@@ -172,7 +173,7 @@ Otro algoritmo raro – El while es válido?.
 
 \begin{lstlisting}
 int max = 0;
-for (int m=0; m<n; m++) {
+for (int m = 0; m < n; m++) {
   int cont = 0;
   int k = m + 1;
   while (vec[m] <= vec[k]) {
@@ -211,6 +212,7 @@ while (i < n) {
 }
 \end{lstlisting}
 
+\pagebreak
 \section{Ejercicio 12}
 Búsqueda binaria – Arreglo ordenado.
 
@@ -222,11 +224,11 @@ int pos = -1;
 while ((pos == -1) && (sup >= inf)) {
   int medio = (inf + sup) / 2;
   if (arreglo[medio] == 80)
-  	posicion = medio;
+  	pos = medio;
   else if (arreglo[medio] < 80)
-  	limiteInferior = medio + 1;
+  	inf = medio + 1;
   else
-  	limiteSuperior = medio - 1;
+  	sup = medio - 1;
 }
 \end{lstlisting}
 
